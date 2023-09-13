@@ -84,7 +84,7 @@ public class OrderQueryRepository {
 
     private Map<Long, List<OrderItemQueryDto>> findOrderItemMap(List<Long> orderIds) {
         List<OrderItemQueryDto> orderItems = em.createQuery(
-                "select new OrderItemQueryDto(oi.order.id, i.name, oi.orderPrice, oi.count)" +
+                "select new jpabook.jpastudy2.repository.order.query.OrderItemQueryDto(oi.order.id, i.name, oi.orderPrice, oi.count)" +
                         " from OrderItem oi" +
                         " join oi.item i" +
                         " where oi.order.id in :orderIds", OrderItemQueryDto.class)
@@ -97,7 +97,7 @@ public class OrderQueryRepository {
 
     public List<OrderFlatDto> findAllByDto_flat() {
         return em.createQuery(
-                "select new OrderFlatDto(o.id, m.name, o.orderDate, o.status, d.address, i.name, oi.orderPrice, oi.count)" +
+                "select new jpabook.jpastudy2.repository.order.query.OrderFlatDto(o.id, m.name, o.orderDate, o.status, d.address, i.name, oi.orderPrice, oi.count)" +
                         " from Order o" +
                         " join o.member m" +
                         " join o.delivery d" +
